@@ -98,7 +98,7 @@ func isSameDomain(targetURL string,baseDomain string) bool {
 }
 
 func isURLAllowed(userAgent,targetURL,baseDomain string) bool{
-	resp, err := getRequest(fmt.Sprintf("%s/robots.txt", &url.URL{Scheme: "https", Host: baseDomain}))
+	resp, err := getRequest(fmt.Sprintf("%s/robots.txt", (&url.URL{Scheme: "https", Host: baseDomain}).String()))
 	if err!=nil{
 		fmt.Println("Error fetching robots.txt: ",err)
 		return true //if err assume all urls are allowed
